@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacts</title>
+    <script
+      src="https://kit.fontawesome.com/733294f120.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="box" id="heading">
+      <h1>Contact List</h1>
+    </div>
+    <div class="box">
+      <% for(let i = 0; i < myContact.length; i++) { %>
+      <form action="/contactDelete" method="POST">
+        <div class="contact">
+          <input
+            type="hidden"
+            value="<%= myContact[i].contact.fullName%>"
+            name="oldFullName"
+          />
+
+          <input
+            type="hidden"
+            value="<%= myContact[i].contact.phoneNumber%>"
+            name="oldPhoneNumber"
+          />
+
+          <p><%= myContact[i].contact.fullName%></p>
+          <p><%= myContact[i].contact.phoneNumber%></p>
+
+          <button type="submit" name="deleteContactButton">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </form>
+      <% } %>
+
+      <form action="/" class="class" method="POST">
+        <input type="text" name="fullName" placeholder="Add Name" />
+        <input type="text" name="phoneNumber" placeholder="Add Phone Number" />
+        <button type="submit">+</button>
+      </form>
+    </div>
+    <footer>
+      <span>Elis-Liselle S. &#169; 2021</span>
+    </footer>
+  </body>
+</html>
